@@ -1,3 +1,8 @@
+import { CounterQuantity } from "../CounterQuantity/CounterQuantity";
+
 export const Dish = ({ dish }) => {
-  return <> {dish.name} </>;
+  return <> <span> {dish.name} 
+  </span>
+  <CounterQuantity key={dish.id} />
+  </>
 };

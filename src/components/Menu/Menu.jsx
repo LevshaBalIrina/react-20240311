@@ -4,8 +4,7 @@ export const Menu = ({ menu }) => {
   return (
     <ul>
       {menu.map((dish) => (
-        // eslint-disable-next-line react/jsx-key
-        <li>
+        <li key={dish.id}>
           {' '}
           <Dish dish={dish} />{' '}
         </li>
