@@ -4,8 +4,7 @@ export const Reviews = ({ reviews }) => {
   return (
     <ul>
       {reviews.map((review) => (
-        // eslint-disable-next-line react/jsx-key
-        <li>
+        <li key={review.id}>
           {' '}
           <Review review={review} />{' '}
         </li>

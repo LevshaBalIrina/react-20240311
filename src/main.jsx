@@ -1,13 +1,8 @@
 //import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Layout } from './components/Layout/Layout';
 import { Restaurants } from './components/Restaurants/Restaurants';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Layout>
-    <Restaurants />
-  </Layout>
-);
+ReactDOM.createRoot(document.getElementById('root')).render(<Restaurants />);
 
 // React.createElement("div", {
 //   children: [
