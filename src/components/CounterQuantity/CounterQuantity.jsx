@@ -1,21 +1,13 @@
-import { useState } from 'react';
-
-export const CounterQuantity = () => {
-  const [counter, setCounter] = useState(0);
-
-  function onClickEvent(value) {
-    if ((counter === 0 && value < 0) || (counter === 5 && value > 0)) {
-      return;
-    }
-
-    setCounter(counter + value);
-  }
-
+export const CounterQuantity = ({ value, onChange, min = 0, max = 5 }) => {
   return (
     <span>
-      <button onClick={() => onClickEvent(-1)}>-</button>
-      {counter}
-      <button onClick={() => onClickEvent(1)}>+</button>
+      <button onClick={() => onChange(value - 1)} disabled={value <= min}>
+        -
+      </button>
+      {value}
+      <button onClick={() => onChange(value + 1)} disabled={value >= max}>
+        +
+      </button>
     </span>
   );
 };

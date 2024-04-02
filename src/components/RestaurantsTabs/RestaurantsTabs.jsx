@@ -1,8 +1,6 @@
 import { Tab } from '../Tab/Tab';
 
-const setSavedCurrentRestaurantIndex = (index) => {
-  return Number(localStorage.setItem('currentRestaurantIndex', index));
-};
+
 
 export const RestaurantsTabs = ({ restaurants, onTabClick, currentIndex }) => {
   return (
@@ -14,7 +12,6 @@ export const RestaurantsTabs = ({ restaurants, onTabClick, currentIndex }) => {
           isActive={index === currentIndex}
           onClick={() => {
             onTabClick(index);
-            setSavedCurrentRestaurantIndex(index);
           }}
         />
       ))}
