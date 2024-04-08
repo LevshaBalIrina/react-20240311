@@ -1,7 +1,10 @@
+import styles from './styles.module.css';
+import { Button } from '../Button/Button';
+
 export const Tab = ({ title, isActive, onClick }) => {
   return (
-    <button onClick={onClick} disabled={isActive} >
+    <Button onClick={onClick} disabled={isActive} className={styles.action}>
       {title}
-    </button>
+    </Button>
   );
 };

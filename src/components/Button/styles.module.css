@@ -1,0 +1,42 @@
+.root {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 2em;
+  outline: none;
+  transition: 0.2s;
+  border-radius: 10px;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #fdbe33 #000 #d77206;
+}
+
+.default {
+  background: linear-gradient(#f3ae0f, #e38916) #e38916;
+}
+.default:hover {
+  background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+}
+.default:active {
+  background: linear-gradient(#f59500, #f5ae00) #f59500;
+}
+
+.default:disabled {
+  background: #a7a7a7;
+  border-color: #a7a7a7;
+}
+
+.dark {
+  background: linear-gradient(#a27409, #e38916) #e38916;
+}
+.dark:hover {
+  background: linear-gradient(#a27409, #e38916) #f5ae00;
+}
+.dark:active {
+  background: linear-gradient(#a27409, #e38916) #f59500;
+}
+
+.dark:disabled {
+  background: #827f7f;
+  border-color: #827f7f;
+}

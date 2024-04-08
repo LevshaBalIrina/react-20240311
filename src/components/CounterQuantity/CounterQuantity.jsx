@@ -1,3 +1,6 @@
+import { Button } from '../Button/Button';
+import styles from './styles.module.css';
+
 export const CounterQuantity = ({
   value,
   increment,
@@ -6,14 +9,22 @@ export const CounterQuantity = ({
   max = 5,
 }) => {
   return (
-    <span>
-      <button onClick={decrement} disabled={value <= min}>
+    <div>
+      <Button
+        onClick={decrement}
+        disabled={value <= min}
+        className={styles.action}
+      >
         -
-      </button>
+      </Button>
       {value}
-      <button onClick={increment} disabled={value >= max}>
+      <Button
+        onClick={increment}
+        disabled={value >= max}
+        className={styles.action}
+      >
         +
-      </button>
-    </span>
+      </Button>
+    </div>
   );
 };
