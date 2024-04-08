@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { restaurants } from '../../constans/mock';
-import { Layout } from '../Layout/Layout';
 import { Restaurant } from './Restaurant';
 import { RestaurantsTabs } from '../RestaurantsTabs/RestaurantsTabs';
 import { getStorageItem, setStorageItem } from '../../util/storage';
@@ -13,17 +12,16 @@ export const Restaurants = () => {
   );
   const currentRestaurant = restaurants[currentRestaurantIndex];
   return (
-    <Layout>
+    <div>
       <RestaurantsTabs
         restaurants={restaurants}
         currentIndex={currentRestaurantIndex}
-        onTabClick={(index) => {setCurrentRestaurantIndex(index);
+        onTabClick={(index) => {
+          setCurrentRestaurantIndex(index);
           setStorageItem(CURRENT_RESTAURANT_INDEX_STORAGE_KEY, index);
         }}
       />
       {currentRestaurant && <Restaurant restaurant={currentRestaurant} />}
-    </Layout>
+    </div>
   );
 };
-
-// setSavedCurrentRestaurantIndex(index);
