@@ -1,25 +1,25 @@
 import { useSelector } from 'react-redux';
 import { Menu } from '../Menu/Menu';
 import { Reviews } from '../Reviews/Reviews';
+import { selectRestaurantById } from '../../redux/entities/restaurants/selector';
 
 export const Restaurant = ({ restaurantId }) => {
-  const restaurant = useSelector(
-    (stage) => stage.restaurants.entities[restaurantId]
+  const restaurant = useSelector((state) =>
+  selectRestaurantById(state, restaurantId)
   );
-
-  const { name, menu, reviews } = restaurant;
  
-  if (!restaurantId) {
+
+  if (!restaurant) {
     return null;
   }
-
+ 
   return (
     <div>
-      <h2>{name}</h2>
+      <h2>{restaurant.name}</h2>
       <h3>Menu:</h3>
-      <Menu menuIds={menu} />
+      <Menu restaurantId={restaurantId} />
       <h3>Reviews:</h3>
-      <Reviews reviewsIds={reviews} />
+      <Reviews restaurantId={restaurantId} />
     </div>
   );
 };
