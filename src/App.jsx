@@ -1,9 +1,8 @@
-
-import { Restaurants } from './components/Restaurants/Restaurants';
 import { ThemeContext, useTheme } from './contexts/theme';
 import { UserContext, useUser } from './contexts/user';
 import { Layout } from './components/Layout/Layout';
 import { useMemo } from 'react';
+import { ContainerRestaurants } from './components/Restaurants/containerRestaurants';
 
 export const App = () => {
   const { theme, toggleTheme } = useTheme();
@@ -23,7 +22,7 @@ export const App = () => {
     <ThemeContext.Provider value={themeContextValue}>
       <UserContext.Provider value={userContextValue}>
         <Layout>
-          <Restaurants />
+          <ContainerRestaurants />
         </Layout>
       </UserContext.Provider>
     </ThemeContext.Provider>

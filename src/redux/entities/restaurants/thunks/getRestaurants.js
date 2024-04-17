@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
- import { selectReataurantIds } from '../selector';
+import { selectReataurantIds } from '../selector';
 
 export const getRestaurants = createAsyncThunk(
   'restaurants/getRestaurants',
@@ -14,8 +14,8 @@ export const getRestaurants = createAsyncThunk(
     return result;
   },
   {
-    condition: (_, { getState }) => {
-        !selectReataurantIds(getState())?.length;
-    }
-}
+    condition: ({ forceReload = false } = {}, { getState }) => {
+      forceReload || !selectReataurantIds(getState())?.length;
+    },
+  }
 );

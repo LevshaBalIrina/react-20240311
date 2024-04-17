@@ -1,26 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Restaurant } from './Restaurant';
-import { RestaurantsTabs } from '../RestaurantsTabs/RestaurantsTabs';
-import { useDispatch } from 'react-redux';
-import { getRestaurants } from '../../redux/entities/restaurants/thunks/getRestaurants';
+import { useState } from 'react';
+import { ContainerRestaurantsTab } from '../RestaurantsTabs/containerRestaurantsTab';
+import { ContainerRestaurant } from './containerRestaurant';
+import { Button } from '../Button/Button';
 
-export const Restaurants = () => {
+export const Restaurants = ({onRefresh}) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState();
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, [dispatch]);
 
   return (
     <div>
-      <RestaurantsTabs
+      <ContainerRestaurantsTab
         currentRestaurantId={currentRestaurantId}
         onTabClick={(index) => {
           setCurrentRestaurantId(index);
         }}
       />
-      {currentRestaurantId && <Restaurant restaurantId={currentRestaurantId} />}
+      <Button onClick={onRefresh}>Refresh</Button>
+      {currentRestaurantId && <ContainerRestaurant restaurantId={currentRestaurantId} />}
     </div>
   );
 };

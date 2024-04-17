@@ -1,26 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Dish } from '../Dish/Dish';
-import { selectRestaurantDishIds } from '../../redux/entities/dishes/selector';
-import { useEffect } from 'react';
-import { getDishesByRestaurantId } from '../../redux/entities/dishes/thunks/getDishesByRestaurantId';
+import { ContainerDish } from '../Dish/containerDish';
 
-export const Menu = ({ restaurantId }) => {
-  const dishIds = useSelector((state) =>
-    selectRestaurantDishIds(state, restaurantId)
-  );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDishesByRestaurantId(restaurantId));
-  }, [dispatch, restaurantId]);
-
+export const Menu = ({ dishIds }) => {
   return (
     <ul>
       {dishIds.map((dishId) => (
         <li key={dishId}>
           {' '}
-          <Dish dishId={dishId} />{' '}
+          <ContainerDish dishId={dishId} />{' '}
         </li>
       ))}
     </ul>

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { selectDishesIds, selectRestaurantDishIds } from '../selector';
+import { selectRestaurantDishIds } from '../../restaurants/selector';
+import { selectDishesIds } from '../selector';
 
 export const getDishesByRestaurantId = createAsyncThunk(
   'dish/getDishesByRestaurantId',

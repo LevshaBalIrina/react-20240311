@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { selectRestaurantReviewIds, selectReviewsIds } from '../selector';
+import { selectRestaurantReviewIds } from '../../restaurants/selector';
+import { selectReviewsIds } from '../selector';
 
 export const getReviewsByRestaurantId = createAsyncThunk(
   'reviews/getReviewsByRestaurantId',
