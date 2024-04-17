@@ -1,25 +1,21 @@
 import { useState } from 'react';
-import { Restaurant } from './Restaurant';
-import { RestaurantsTabs } from '../RestaurantsTabs/RestaurantsTabs';
-import { getStorageItem, setStorageItem } from '../../util/storage';
+import { ContainerRestaurantsTab } from '../RestaurantsTabs/containerRestaurantsTab';
+import { ContainerRestaurant } from './containerRestaurant';
+import { Button } from '../Button/Button';
 
-const CURRENT_RESTAURANT_INDEX_STORAGE_KEY = 'currentRestaurantId';
-
-export const Restaurants = () => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState(() =>
-    getStorageItem(CURRENT_RESTAURANT_INDEX_STORAGE_KEY)
-  );
+export const Restaurants = ({onRefresh}) => {
+  const [currentRestaurantId, setCurrentRestaurantId] = useState();
 
   return (
     <div>
-      <RestaurantsTabs
+      <ContainerRestaurantsTab
         currentRestaurantId={currentRestaurantId}
         onTabClick={(index) => {
           setCurrentRestaurantId(index);
-          setStorageItem(CURRENT_RESTAURANT_INDEX_STORAGE_KEY, index);
         }}
       />
-      {currentRestaurantId && <Restaurant restaurantId={currentRestaurantId} />}
+      <Button onClick={onRefresh}>Refresh</Button>
+      {currentRestaurantId && <ContainerRestaurant restaurantId={currentRestaurantId} />}
     </div>
   );
 };

@@ -1,11 +1,8 @@
-import { useSelector } from 'react-redux';
 import { useCurrentUser } from '../../contexts/user';
-import { useCounter } from '../../hooks/useCounter';
 import { CounterQuantity } from '../CounterQuantity/CounterQuantity';
 
-export const Dish = ({ dishId }) => {
-  const dish = useSelector((stage) => stage.dishes.entities[dishId]);
-  const { counter, increment, decrement } = useCounter();
+export const  Dish = (props) => {
+  const { dish, amount, increment, decrement } = props;
   const { user } = useCurrentUser();
 
   return (
@@ -13,10 +10,9 @@ export const Dish = ({ dishId }) => {
       <span>{dish.name}</span>
       {!!user && (
         <CounterQuantity
-          value={counter}
+          value={amount}
           increment={increment}
           decrement={decrement}
-          key={dishId}
         />
       )}
     </>

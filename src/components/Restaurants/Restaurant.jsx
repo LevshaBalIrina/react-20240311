@@ -1,25 +1,14 @@
-import { useSelector } from 'react-redux';
-import { Menu } from '../Menu/Menu';
-import { Reviews } from '../Reviews/Reviews';
+import { ContainerMenu } from '../Menu/containerMenu';
+import { ContainerReviews } from '../Reviews/containerReviews';
 
-export const Restaurant = ({ restaurantId }) => {
-  const restaurant = useSelector(
-    (stage) => stage.restaurants.entities[restaurantId]
-  );
-
-  const { name, menu, reviews } = restaurant;
- 
-  if (!restaurantId) {
-    return null;
-  }
-
+export const Restaurant = ({ restaurant }) => {
   return (
     <div>
-      <h2>{name}</h2>
+      <h2>{restaurant.name}</h2>
       <h3>Menu:</h3>
-      <Menu menuIds={menu} />
+      <ContainerMenu restaurantId={restaurant.id} />
       <h3>Reviews:</h3>
-      <Reviews reviewsIds={reviews} />
+      <ContainerReviews restaurantId={restaurant.id} />
     </div>
   );
 };
