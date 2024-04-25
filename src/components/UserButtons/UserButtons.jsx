@@ -6,7 +6,6 @@ export const UseButtons = ({ className }) => {
   const isAuthorized = !!user;
   return (
     <div>
-      {/* {!!user && <span>{user}</span>} */}
       <Button
         className={className}
         onClick={() => (isAuthorized ? logout() : login('Irina'))}

@@ -1,6 +1,10 @@
-import { useSelector } from 'react-redux';
+import { ContainerUser } from '../User/containerUser';
 
-export const Review = ({ reviewId }) => {
-  const review  = useSelector((stage) => stage.reviews.entities[reviewId])
-  return <>{review.text}</>;
+export const Review = ({ review }) => {
+  return (
+    <>
+      {review.text}
+      <ContainerUser userId={review.userId} />
+    </>
+  );
 };

@@ -1,17 +1,10 @@
 import styles from './styles.module.css';
-import { Button } from '../Button/Button';
-import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-export const Tab = ({ restaurantId, isActive, onClick }) => {
-  const restaurant = useSelector(
-    (state) => state.restaurants.entities[restaurantId]
-  );
-  if(!restaurant) {
-    return null;
-  }
+export const Tab = ({ title, path }) => {
   return (
-    <Button onClick={onClick} disabled={isActive} className={styles.action}>
-      {restaurant?.name}
-    </Button>
+    <NavLink to={path} className={styles.action}>
+      {title}
+    </NavLink>
   );
 };

@@ -36,3 +36,15 @@
   left: 10px;
   margin-top: 2%;
 }
+
+.linkHome {
+  font-size: 20px;
+  left: 70px;
+  top: 10px;
+}
+
+.linkRest {
+  font-size: 20px;
+  left: 70px;
+  top: 30px;
+}
