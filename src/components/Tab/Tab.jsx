@@ -1,12 +1,10 @@
 import styles from './styles.module.css';
-import { Button } from '../Button/Button';
+import { NavLink } from 'react-router-dom';
 
-export const Tab = ({ title, isActive, onClick }) => {
-  
-  
+export const Tab = ({ title, path }) => {
   return (
-    <Button onClick={onClick} disabled={isActive} className={styles.action}>
+    <NavLink to={path} className={styles.action}>
       {title}
-    </Button>
+    </NavLink>
   );
 };

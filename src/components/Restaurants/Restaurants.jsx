@@ -1,21 +1,11 @@
-import { useState } from 'react';
 import { ContainerRestaurantsTab } from '../RestaurantsTabs/containerRestaurantsTab';
-import { ContainerRestaurant } from './containerRestaurant';
-import { Button } from '../Button/Button';
+import { Outlet } from 'react-router-dom';
 
-export const Restaurants = ({onRefresh}) => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState();
-
+export const Restaurants = () => {
   return (
     <div>
-      <ContainerRestaurantsTab
-        currentRestaurantId={currentRestaurantId}
-        onTabClick={(index) => {
-          setCurrentRestaurantId(index);
-        }}
-      />
-      <Button onClick={onRefresh}>Refresh</Button>
-      {currentRestaurantId && <ContainerRestaurant restaurantId={currentRestaurantId} />}
+      <ContainerRestaurantsTab />
+      <Outlet />
     </div>
   );
 };

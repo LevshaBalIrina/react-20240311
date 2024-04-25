@@ -1,27 +1,14 @@
-import { useSelector } from 'react-redux';
 import { Reviews } from './Reviews';
-import { getReviewsByRestaurantId } from '../../redux/entities/reviews/thunks/getReviewsByRestaurantId';
-import { selectRestaurantReviewIds } from '../../redux/entities/restaurants/selector';
-import { getUsers } from '../../redux/entities/users/thunks/getUsers';
-import { useRequest } from '../../hooks/useRequest';
-import { REQUEST_STATUSES } from '../../redux/ui/request/constants';
+import { useParams } from 'react-router-dom';
+import { useGetReviewsQuery } from '../../redux/service/api';
 
-export const ContainerReviews = ({ restaurantId }) => {
-  const reviewIds = useSelector((state) =>
-    selectRestaurantReviewIds(state, restaurantId)
-  );
-  const reviewRequestStatus = useRequest(
-    getReviewsByRestaurantId,
-    restaurantId
-  );
-  const userRequestStatus = useRequest(getUsers);
+export const ContainerReviews = () => {
+  const { restaurantId } = useParams();
+  const { data: reviews, isLoading } = useGetReviewsQuery(restaurantId);
 
-  if (
-    reviewRequestStatus === REQUEST_STATUSES.pending ||
-    userRequestStatus === REQUEST_STATUSES.pending
-  ) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  return <Reviews reviewIds={reviewIds} />;
+  return <Reviews reviews={reviews} />;
 };

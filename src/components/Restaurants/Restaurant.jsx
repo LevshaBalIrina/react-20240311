@@ -1,14 +1,15 @@
-import { ContainerMenu } from '../Menu/containerMenu';
-import { ContainerReviews } from '../Reviews/containerReviews';
+import { Outlet } from 'react-router-dom';
+import { Tab } from '../Tab/Tab';
 
 export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h2>{restaurant.name}</h2>
-      <h3>Menu:</h3>
-      <ContainerMenu restaurantId={restaurant.id} />
-      <h3>Reviews:</h3>
-      <ContainerReviews restaurantId={restaurant.id} />
+      <div> 
+        <Tab title='Menu' path='./menu'/>
+        <Tab title='Reviews' path='./reviews'/>
+      </div>
+      <Outlet />
     </div>
   );
 };

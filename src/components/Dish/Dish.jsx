@@ -1,20 +1,5 @@
-import { useCurrentUser } from '../../contexts/user';
-import { CounterQuantity } from '../CounterQuantity/CounterQuantity';
+import { Link } from 'react-router-dom';
 
-export const  Dish = (props) => {
-  const { dish, amount, increment, decrement } = props;
-  const { user } = useCurrentUser();
-
-  return (
-    <>
-      <span>{dish.name}</span>
-      {!!user && (
-        <CounterQuantity
-          value={amount}
-          increment={increment}
-          decrement={decrement}
-        />
-      )}
-    </>
-  );
+export const Dish = ({ dish }) => {
+  return <Link to={`/dish/${dish.id}`}>{dish.name}</Link>;
 };
